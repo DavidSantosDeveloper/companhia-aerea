@@ -119,7 +119,7 @@
         }
 
 
-        @media screen and (max-width:320px){
+        @media screen and (max-width:359px){
             main h1{
                 font-size: 2rem;
             }
@@ -145,6 +145,33 @@
                 font-size: 1rem;
             }
 
+        }
+
+        @media screen and (min-width:360px){
+            main h1{
+                font-size: 2rem;
+            }
+
+            #formulario_de_cadrastro_voos_e_aeronaves{
+                
+                padding-bottom: 10px;
+                padding-top: 10px;
+                border-radius: 12px;
+            }
+
+            #secao_do_formulario_cadrastro_voos legend{
+                font-size: 1.2rem;
+            }
+            #secao_do_formulario_cadrastro_voos textarea{
+                font-size: 1rem;
+            }
+
+            #secao_do_formulario_cadrastro_aeronaves legend{
+                font-size: 1.2rem;
+            }
+            #secao_do_formulario_cadrastro_aeronaves  textarea{
+                font-size: 1rem;
+            }   
         }
 
     </style>
@@ -187,6 +214,15 @@
 
     <script src="js/Build/script.js" ></script>
 
-    
+    <script>
+        let elemento=document.getElementById("corpo_da_pagina")
+        let h2_resolucao_disposivo=document.createElement("h2")
+        h2_resolucao_disposivo.innerText=`Resolucao do dispositivo=> largura:${window.screen.width}px &  altura:${window.screen.height}px `
+        let h2_resolucao_viewport=document.createElement("h2")
+        h2_resolucao_viewport.innerText=`Resolucao da viewport=> largura:${window.innerWidth}px &  altura:${window.innerHeight}px `
+
+        elemento.append(h2_resolucao_disposivo)
+        elemento.append(h2_resolucao_viewport)
+    </script>
 </body>
 </html>
