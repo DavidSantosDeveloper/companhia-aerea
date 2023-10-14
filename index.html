@@ -111,7 +111,6 @@
             font-size: 1.5rem;
         }
         #butao_enviar:hover{
-            font-size: 1.5rem;
            /* background: linear-gradient(45deg, rgba(209,234,254,1) 17%, rgba(17,143,209,1) 86%);*/ 
            background-color: white;
             color: #002e47;
@@ -147,7 +146,7 @@
 
         }
 
-        @media screen and (min-width:360px){
+        @media screen and (min-width:360px) and (max-width:600px){
             main h1{
                 font-size: 2rem;
                 margin-bottom: 10px;
@@ -175,6 +174,119 @@
                 font-size: 1rem;
             }   
         }
+
+        @media screen and (min-width:720px) and (max-width:1080px) and (orientation:portrait){
+            main h1{
+                font-size: 4.5rem;
+                margin-bottom: 10px;
+                margin-top: 50px;
+            }
+
+            #formulario_de_cadrastro_voos_e_aeronaves{
+                box-sizing: border-box;
+                padding-bottom: 10px;
+                padding-top: 0px;
+                border-radius: 12px;
+            }
+
+            #secao_do_formulario_cadrastro_voos legend{
+                font-size: 3rem;
+            }
+            #secao_do_formulario_cadrastro_voos textarea{
+                font-size: 2.8rem;
+            }
+
+            #secao_do_formulario_cadrastro_aeronaves legend{
+                font-size: 3rem;
+            }
+            #secao_do_formulario_cadrastro_aeronaves  textarea{
+                font-size: 2.8rem;
+            }   
+
+            #butao_enviar{
+                font-size: 3rem;
+            }
+        }
+
+        @media screen and (min-width:2560px) and (max-width:3839px){
+            main h1{
+                font-size: 7rem;
+                margin-bottom: 10px;
+                margin-top: 50px;
+            }
+
+            #formulario_de_cadrastro_voos_e_aeronaves{
+                box-sizing: border-box;
+                padding-bottom: 10px;
+                padding-top: 0px;
+                border-radius: 12px;
+
+            }
+            form#formulario_de_cadrastro_voos_e_aeronaves{
+                max-width: 1800px;
+            }
+
+            #secao_do_formulario_cadrastro_voos legend{
+                font-size: 5rem;
+            }
+            #secao_do_formulario_cadrastro_voos textarea{
+                font-size: 2.8rem;
+            }
+
+            #secao_do_formulario_cadrastro_aeronaves legend{
+                font-size: 5rem;
+            }
+            #secao_do_formulario_cadrastro_aeronaves  textarea{
+                font-size: 2.8rem;
+            }   
+
+            #butao_enviar{
+                font-size: 3rem;
+            }
+        }
+
+        
+        @media screen and (width:3840px){
+            main h1{
+                font-size: 7rem;
+                margin-bottom: 10px;
+                margin-top: 50px;
+            }
+
+            #formulario_de_cadrastro_voos_e_aeronaves{
+                box-sizing: border-box;
+                padding-bottom: 10px;
+                padding-top: 0px;
+                border-radius: 12px;
+
+            }
+            form#formulario_de_cadrastro_voos_e_aeronaves{
+                max-width: 1800px;
+            }
+
+            #secao_do_formulario_cadrastro_voos legend{
+                font-size: 5rem;
+            }
+            #secao_do_formulario_cadrastro_voos textarea{
+                font-size: 2.8rem;
+            }
+
+            #secao_do_formulario_cadrastro_aeronaves legend{
+                font-size: 5rem;
+            }
+            #secao_do_formulario_cadrastro_aeronaves  textarea{
+                font-size: 2.8rem;
+            }   
+
+            #butao_enviar{
+                font-size: 3rem;
+            }
+        }
+        
+        
+
+
+
 
     </style>
     
@@ -216,15 +328,6 @@
 
     <script src="js/Build/script.js" ></script>
 
-    <script>
-        let elemento=document.getElementById("corpo_da_pagina")
-        let h2_resolucao_disposivo=document.createElement("h2")
-        h2_resolucao_disposivo.innerText=`Resolucao do dispositivo=> largura:${window.screen.width}px &  altura:${window.screen.height}px `
-        let h2_resolucao_viewport=document.createElement("h2")
-        h2_resolucao_viewport.innerText=`Resolucao da viewport=> largura:${window.innerWidth}px &  altura:${window.innerHeight}px `
-
-        elemento.append(h2_resolucao_disposivo)
-        elemento.append(h2_resolucao_viewport)
-    </script>
+   
 </body>
 </html>
