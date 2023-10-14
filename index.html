@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 16px;
+        }
+        body{
+            height: 100vh !important;
+            width: 100vw !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+           align-items: center;
+           background-color: #002e47;
+        }
+        h1{
+            color: white;
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+        }
+
+        main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            text-align: left;
+        }
+
+        form#formulario_de_cadrastro_voos_e_aeronaves{
+            width: 90% !important;
+            height: 70vh !important;
+            background-color: white;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.5rem;
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #secao_do_formulario_cadrastro_voos{
+            border: 1px solid black;
+            font-size: 1.5rem;
+            width: 95%;
+        }
+        #secao_do_formulario_cadrastro_voos legend{
+            font-size: 2.2rem;
+        }
+
+        #secao_do_formulario_cadrastro_voos textarea{
+            resize: none;
+            margin-left: 10px;
+            height: calc(20vh);
+            width: 98%;
+           font-size: 1.5rem;
+           box-shadow: 0 0 0 0;
+            outline: 0;
+           
+        }
+        #secao_do_formulario_cadrastro_voos textarea:hover{
+            box-shadow: 0 0 0 0;
+            outline: 0;
+        }
+        
+        #rotulo_textearea_cadrastro_dos_voos>span{
+            /*color: #638292;*/
+            color: #747474;
+        }
+
+        #secao_do_formulario_cadrastro_aeronaves{
+            display: flex;
+            flex-direction: column;
+            border: 1px solid black ; 
+            width: 95%;
+            
+        }
+        #secao_do_formulario_cadrastro_aeronaves legend{
+            font-size: 2.2rem;
+        }
+        #secao_do_formulario_cadrastro_aeronaves textarea{
+            resize: none;
+            width: 98%;
+            margin-left: 10px;
+            height: calc(20vh);
+            font-size: 1.5rem;
+            box-shadow: 0 0 0 0;
+            outline: 0;
+        }
+
+
+        #butao_enviar{
+            width: 95%;
+            height: 8vh;
+            margin-top: 10px;
+            border-radius: 12px;
+            background-color: #80B3FF;
+
+            font-size: 1.5rem;
+        }
+        #butao_enviar:hover{
+            font-size: 1.5rem;
+           /* background: linear-gradient(45deg, rgba(209,234,254,1) 17%, rgba(17,143,209,1) 86%);*/ 
+           background-color: white;
+            color: #002e47;
+            border: 1px solid  black;
+        }
+
+
+
+    </style>
+    
+</head>
+<body id="corpo_da_pagina">
+    <header>
+
+    </header>
+
+    <main>
+        <h1>Sistema Aéreo</h1>
+
+        <form action="" id="formulario_de_cadrastro_voos_e_aeronaves" >
+            <fieldset id="secao_do_formulario_cadrastro_voos">
+                <legend>Campo de cadrastro de Voos</legend>
+                
+                <label id="rotulo_textearea_cadrastro_dos_voos" for="campo_de_cadrastro_dos_voos">
+                  <!-- <span>cidade de partida X cidade destino ; tempo previsto da viagem em minutos   tempo previsto de duracao da viagem (em minutos)</span> </label> --> 
+                <textarea 
+                style="text-align: left;"
+                name="" id="campo_de_cadrastro_dos_voos" 
+                placeholder="Exemplo: Rio de Janeiro x São Paulo;50" required></textarea>
+
+
+            </fieldset>
+
+            <fieldset id="secao_do_formulario_cadrastro_aeronaves">
+                <legend>Campo de cadrastro das aeronaves</legend>
+                <label id="rotulo_textearea_cadrastro_das_aeronaves" for="campo_de_cadrastro_das_aeronaves"></label>
+                <textarea name="" id="campo_de_cadrastro_das_aeronaves" placeholder="Exemplo: AER002-BOING" required></textarea>
+            </fieldset>
+            <button id="butao_enviar"  type="submit" onclick="cadrastrar_dados()" >Enviar</button>
+            
+
+        </form>
+
+
+    </main>
+
+    <script src="js/Build/script.js" ></script>
+
+    <script>
+        let elemento=document.getElementById("corpo_da_pagina")
+        let h2_resolucao_disposivo=document.createElement("h2")
+        h2_resolucao_disposivo.innerText=`Resolucao do dispositivo=> largura:${window.screen.width}px &  altura:${window.screen.height}px `
+        let h2_resolucao_viewport=document.createElement("h2")
+        h2_resolucao_viewport.innerText=`Resolucao da viewport=> largura:${window.innerWidth}px &  altura:${window.innerHeight}px `
+
+        elemento.append(h2_resolucao_disposivo)
+        elemento.append(h2_resolucao_viewport)
+    </script>
+</body>
+</html>
