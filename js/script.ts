@@ -155,8 +155,9 @@ function validar_textArea_cadrastro_aeronaves(valor_textArea_cadrastro_aeronaves
 
 /*>>>>>>>>>>>>>>>>>>>>>>> @@@@@@ NAVEGACAO ENTRE PAGINAS @@@@@<<<<<<<<<<<<<<<<<<<<<<*/
 
-function redircionar_para_a_pagina_voos(){
-    location.assign("http://localhost:5500/voos.html")
+function redirecionar_para_a_pagina_voos(){
+    //location.assign("http://localhost:5500/voos.html")
+    window.location.href = 'voos.html';
 }
 
 
@@ -166,11 +167,23 @@ function armazenar_os_dados_cadrastrados(lista_de_voos:Voo[],lista_de_aeronaves:
     localStorage.removeItem('cadrastro_aeronaves')
     localStorage.removeItem('alocacao_aeronave_voo')
 
-    localStorage.setItem('cadrastro_voos', JSON.stringify(lista_de_voos));
-    localStorage.setItem('cadrastro_aeronaves', JSON.stringify(lista_de_aeronaves));
-    localStorage.setItem('alocacao_aeronave_voo', JSON.stringify(alocacao_aeronave_voo));
+    try {
+        localStorage.setItem('cadrastro_voos', JSON.stringify(lista_de_voos));
+        localStorage.setItem('cadrastro_aeronaves', JSON.stringify(lista_de_aeronaves));
+        localStorage.setItem('alocacao_aeronave_voo', JSON.stringify(alocacao_aeronave_voo));
+        redirecionar_para_a_pagina_voos()
+    
+    } catch (error) {
+        console.error('Erro ao escrever na Local Storage: ', error);
+    }
+    
+
+    console.log(lista_de_voos)
+    console.log(lista_de_aeronaves)
+    console.log(alocacao_aeronave_voo)
     
 }
+
 
 
 function personalizar_as_mensagens_de_campo_invalido_do_formulario(){
@@ -206,19 +219,34 @@ function personalizar_as_mensagens_de_campo_invalido_do_formulario(){
             
 <<<<<<<<<<<<<<<<<<<<<<###############*/
 
+
 function cadrastrar_dados(){
     let formulario=document.getElementById("formulario_de_cadrastro_voos_e_aeronaves")
     formulario.addEventListener('submit',(e:Event)=>
     {
             e.preventDefault()
   
+            
+            let fieldset_secao_cadrastro_voos=document.getElementById("secao_do_formulario_cadrastro_voos")
+            let fieldset_secao_cadrastro_aeronaves=document.getElementById("secao_do_formulario_cadrastro_aeronaves")
+            console.log(fieldset_secao_cadrastro_voos)
+            console.log(fieldset_secao_cadrastro_aeronaves)
+            
             let campo_textArea_voos=document.getElementById("campo_de_cadrastro_dos_voos")
             let campo_textArea_aeronaves=document.getElementById("campo_de_cadrastro_das_aeronaves")
+
+            //RESET estilizacao das textareas para o estado normal
+            campo_textArea_voos.classList.remove("textarea_com_valor_invalido")
+            campo_textArea_aeronaves.classList.remove("textarea_com_valor_invalido")
+
+
             //VALIDACAO DOS CAMPOS
-            let valor_textArea_voos_eh_valido=validar_textArea_cadrastro_voos(campo_textArea_voos.value)
-            let valor_textArea_aeronaves_eh_valido=validar_textArea_cadrastro_aeronaves(campo_textArea_aeronaves.value)
+            let valor_textArea_voos_eh_valido=validar_textArea_cadrastro_voos(campo_textArea_voos.value.trim())
+            let valor_textArea_aeronaves_eh_valido=validar_textArea_cadrastro_aeronaves(campo_textArea_aeronaves.value.trim())
 
            if(valor_textArea_voos_eh_valido && valor_textArea_aeronaves_eh_valido){
+                     campo_textArea_aeronaves.setCustomValidity("")
+                     campo_textArea_voos.setCustomValidity("")
 
                         let lista_de_voos_cadrastrados: Voo[]=[]
                         let lista_de_aeronaves_cadrastradas: Aeronave[]=[]
@@ -230,36 +258,57 @@ function cadrastrar_dados(){
                         let alocacao_aeronave_voo=alocar__randomicamente_as_aeronaves_para_os_voos(lista_de_voos_cadrastrados,lista_de_aeronaves_cadrastradas)
 
                         // adicionando os dados do cadrastro ao LocalStorage para serem acessados na pagina voos.html
-                        armazenar_os_dados_cadrastrados(lista_de_voos_cadrastrados,lista_de_aeronaves_cadrastradas,alocacao_aeronave_voo)
+                        
+                            armazenar_os_dados_cadrastrados(lista_de_voos_cadrastrados,lista_de_aeronaves_cadrastradas,alocacao_aeronave_voo)
+                        
+                     
 
-                        redircionar_para_a_pagina_voos()
+                        
             }
 
             else if(valor_textArea_voos_eh_valido && valor_textArea_aeronaves_eh_valido==false){
                 alert("O Campo de cadrastro de aeronaves não está em um formato válido! Por favor,verifique se o valor digitado está conforme ao padrão esperado pelo campo.")
+                campo_textArea_aeronaves.setCustomValidity("Formato esperado: MODELO-MARCA . Exemplo: AER001-AIRBUS")
+                console.log(valor_textArea_aeronaves_eh_valido)
+                campo_textArea_aeronaves.classList.add("textarea_com_valor_invalido")
                 campo_textArea_aeronaves.focus()
                 
             }
 
             else if(valor_textArea_voos_eh_valido==false && valor_textArea_aeronaves_eh_valido){
                 alert("O Campo de cadrastro de voos não está em um formato válido! Por favor,verifique se o valor digitado está conforme ao padrão esperado pelo campo.")
+                campo_textArea_voos.setCustomValidity("Formato esperado: cidade de partida X cidade destino ; tempo de duração previsto em minutos. Exemplo: Porto Alegre x Salvador;180")
+                console.log(`campo voo eh valido: ${valor_textArea_voos_eh_valido}`)
+                campo_textArea_voos.classList.add("textarea_com_valor_invalido")
                 campo_textArea_voos.focus()
             }
 
             else{
-                alert("Os Campos de cadrastro de voos e cadrastro de aeronaves não estão em um formato válido! Por favor,verifique se o valor digitado está conforme ao padrão esperado pelo campo.")
+                alert("Os Campos de cadrastro de voos e cadrastro de aeronaves não estão em um formato válido! Por favor,verifique se o valor digitado está conforme ao padrão esperado pelos respectivos campos.")
                 campo_textArea_voos.focus()
                 
             }
 
             campo_textArea_voos.reportValidity();
+            campo_textArea_aeronaves.reportValidity();
 
         console.log("super!!!")
     }
    )
 
+  
 
-   personalizar_as_mensagens_de_campo_invalido_do_formulario()
+   let campo_textArea_voos=document.getElementById("campo_de_cadrastro_dos_voos")
+   let campo_textArea_aeronaves=document.getElementById("campo_de_cadrastro_das_aeronaves")
+
+   campo_textArea_aeronaves.setCustomValidity("")
+   campo_textArea_voos.setCustomValidity("")
+
+
+   campo_textArea_voos.reportValidity();
+   campo_textArea_aeronaves.reportValidity()
+   
+
     
 }
 
