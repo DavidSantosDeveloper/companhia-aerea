@@ -5,41 +5,156 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    <header></header>
 
-    <main>
-        <h1>Voos</h1>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
 
-        <h2>Viagens:</h2>
-        <table border id="tabela_de_voos">
-            <tbody id="tbody_tabela_de_voos">
-                <tr>
-                    <td>Rota</td>
-                    <td>Tempo previsto (em minutos)</td>
-                    <td>Aeronave</td>
-                </tr>
-              
-                
-    
-            </tbody>
-        </table>
+            font-size: 16px;
 
-        <h2>Relatório dos Voos:</h2>
-        <table border id="tabela_relatorio_dos_voos">
-            <tbody id="tbody_tabela_relatorio_dos_voos">
-                <tr>
-                    <td>Aeronave</td>
-                    <td>Quantidade de voos</td>
-                    <td>Tempo total (em minutos)</td>
-                </tr>
-              
-            </tbody>
-        </table>
+        }
+        body{
+            background-color: #002e47;
+            color: white;
+        }
+
+        main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        main h1{
+            font-size: 3rem;
+            
+        }
+         /*CABEÇALHO DO SITE*/
+         header{
+            background-color: white;
+            color: black;
+            height: 10vh;
+            margin-bottom: 50px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        header span{
+            font-size: 3rem;
+        }
+        main a#link_para_pagina_inicial{
+            color: white;
+            font-weight: bold;
+            align-self: flex-start;
+
+            margin-bottom: 50px;
+            margin-left: 20px;
+            font-size: 1.5rem;
+        }
         
 
+        /*SECAO informacoes_sobre_os_voos*/
+        section#informacoes_sobre_os_voos{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        /*SECAO secao_detalhes_das_viagens_aereas*/
+        section#secao_detalhes_das_viagens_aereas{
+            margin-bottom: 25px;
+        }
+        section#secao_detalhes_das_viagens_aereas h2{
+            font-size: 1.8rem;
+        }
+        table#tabela_de_voos{
+            font-size: 1.3rem;
+        }
+        table#tabela_de_voos tr>th{
+            background-color: #80b3ff;
+            color: black;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+        table#tabela_de_voos tr>td{
+            background-color: white;
+            color: black;
+            text-align: center;
+            font-size: 1.3rem;
+        }
 
+        /*SECAO secao_relatorio_das_viagens_aereas*/
+        section#secao_relatorio_das_viagens_aereas{
+            align-self: flex-start;
+        }
+        section#secao_relatorio_das_viagens_aereas h2{
+            font-size: 1.8rem;
+        }
+        table#tabela_relatorio_dos_voos{
+           
+        }
+        table#tabela_relatorio_dos_voos tr>th{
+            background-color: #80b3ff;
+            color: black;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+        table#tabela_relatorio_dos_voos tr>td{
+            background-color: white;
+            color: black;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <span>Companhia Aérea</span>
+    </header>
+
+    <main>
+        <a href="./index.html" id="link_para_pagina_inicial">Ir para Home</a>
+       <section id="informacoes_sobre_os_voos" role="informações sobre os voos">
+                <section id="secao_detalhes_das_viagens_aereas" role="seção de detalhes das viagens aéreas">
+
+                    <h2>Viagens:</h2>
+                    <table border id="tabela_de_voos" role="tabela com detalhes das viagens aereas">
+                        <thead>
+                            <tr>
+                                <th>Rota</th>
+                                <th>Tempo previsto (em minutos)</th>
+                                <th>Aeronave</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody_tabela_de_voos">
+                
+                        </tbody>
+                    </table>
+                </section>
+            
+
+
+                <section id="secao_relatorio_das_viagens_aereas" role="seção de relatórios das viagens aéreas">
+                    <h2>Relatório dos Voos:</h2>
+                    <table border id="tabela_relatorio_dos_voos">
+                        <thead>
+                            <tr>
+                                <th>Aeronave</th>
+                                <th>Quantidade de voos</th>
+                                <th>Tempo total (em minutos)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody_tabela_relatorio_dos_voos">
+                            
+                        
+                        </tbody>
+                    </table>
+                </section>
+       </section>
+        
+       
 
     </main>
 
